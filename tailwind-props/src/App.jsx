@@ -13,6 +13,8 @@ function App() {
       <h1 className='bg-green-500 text-center p-4 text-black rounded-xl mb-6'>Tailwand test</h1>
       <Card username="The Cold Mountains" headingtext="Clip Board"/>
       <Card username="The Road Way" headingtext="Surronding Environmnet"/>
+
+
     </>
   )
 }
