@@ -9,7 +9,7 @@ function App() {
   return (
    <>
     <div
-    className="w-screen h-screen duration-200"
+    className="w-screen h-screen duration-200" 
     style={{backgroundColor:color}}
     >
     
