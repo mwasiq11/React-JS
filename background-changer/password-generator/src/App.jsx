@@ -19,17 +19,18 @@ function App() {
     if (characterAllowed) {
       string += "!@#$%^&*()_~";
     }
-    for (let i = 1; i <=length; i++) {
-      let char = Math.floor(Math.random() * string.length + 1);
-      pass += string.charAt(char);
+
+    for (let i = 1; i <= length; i++) {
+      const charIndx = Math.floor(Math.random() * string.length + 1);
+      pass += string.charAt(charIndx);
     }
     setPassword(pass);
-  }, [length, numberAllowed, characterAllowed, setPassword]);
+  }, [length, numberAllowed, characterAllowed]);
 
   const passwordGeneratorToClipboard = useCallback(() => {
+    window.navigator.clipboard.writeText(password);
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 100);
-    window.navigator.clipboard.writeText(password);
   }, [password]);
 
   useEffect(() => {
@@ -78,8 +79,9 @@ function App() {
           <input
             className="ml-2"
             type="checkbox"
+            checked={numberAllowed}
             onChange={() => {
-              numberAllowed((prev) => !prev);
+              setNumber((prev) => !prev);
             }}
           />
         </div>
@@ -89,8 +91,9 @@ function App() {
           <input
             className="ml-2"
             type="checkbox"
+            checked={characterAllowed}
             onChange={() => {
-              characterAllowed((prev) => !prev);
+              setCharacter((prev) => !prev);
             }}
           />
         </div>
