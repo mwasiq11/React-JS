@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { todoProvider, useTodo } from "./Contexts/Context";
+import { TodoProvider, useTodo } from "./Contexts/Context";
+import TodoForm from "./Components/TodoForm";
+import TodoItems from "./Components/TodoItems";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -18,7 +20,7 @@ function App() {
   const toggleTodo = (id) => {
     setTodos((prev) =>
       prev.map((prevTodo) =>
-        prevTodo === id
+        prevTodo.id === id
           ? { ...prevTodo, completed: !prevTodo.completed }
           : prevTodo
       )
@@ -35,7 +37,7 @@ function App() {
   }, [todos]);
 
   return (
-    <todoProvider
+    <TodoProvider
       value={{ todos, addTodo, deleteTodo, updateTodo, toggleTodo }}
     >
       <div className="bg-[#172842] min-h-screen py-8">
@@ -43,13 +45,20 @@ function App() {
           <h1 className="text-3xl font-bold text-center mb-8 mt-2">
             Manage Your Todos
           </h1>
-          <div className="mb-4">{/* Todo form goes here */}</div>
+          <div className="mb-4">
+           <TodoForm/>
+            </div>
           <div className="flex flex-wrap gap-y-3">
-            {/*Loop and Add TodoItem here */}
+            {todos.map((todo)=>(
+              <div key={todo.id}
+              className="w-full">
+                <TodoItems todo={todo}/>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </todoProvider>
+    </TodoProvider>
   );
 }
 
