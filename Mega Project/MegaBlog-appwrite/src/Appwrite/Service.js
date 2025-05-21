@@ -52,26 +52,70 @@ export class Service {
         config.databaseID,
         config.collectionID,
         slug
-    );
-    return true
+      );
+      return true;
     } catch (error) {
       console.log("App write service:: Delete Post", error);
       return false;
     }
   }
-  async getPost(slug){
+  async getPost(slug) {
     try {
-        return await this.databases.getDocument(
-            config.databaseID,
-            config.collectionID,
-            slug,
-        )
+      return await this.databases.getDocument(
+        config.databaseID,
+        config.collectionID,
+        slug
+      );
     } catch (error) {
-        console.log("app write service :: get Post",error)
-        return false
+      console.log("app write service :: get Post", error);
+      return false;
     }
   }
-  
+  async getPosts(queries = [Query.equal("status", "active")]) {
+    try {
+      return await this.databases.listDocuments(
+        config.databaseID,
+        config.collectionID,
+        queries
+      );
+    } catch (error) {
+      console.log("app write service :: get Posts", error);
+      return false;
+    }
+  }
+  // file upload service//
+  async uploadFile(file) {
+    try {
+      return await this.storage.createFile(
+        config.bucketID,
+        ID.unique(), // Unique ID is must//
+        file
+      );
+    } catch (error) {
+      console.log("app write :: upload file error", error);
+      return false;
+    }
+  }
+  async deleteFile(fileId){
+    try {
+      return await this.storage.deleteFile(
+        config.bucketID,
+        fileId
+      )
+      return true;
+    } catch (error) {
+      console.log("app write :: delete service error",error);
+      return false;
+    }
+  }
+  getFilePreview(fileId){
+    return this.bucketID.getFilePreview(
+      config.bucketID,
+      fileId
+    )
+
+  }
+
 }
 const service = new Service();
 export default service;
