@@ -5,4 +5,6 @@ const config={
     collectionID:String(import.meta.env.VITE_APP_WRITE_COLLECTION_ID),
     bucketID:String(import.meta.env.VITE_APP_WRITE_BUCKET_ID),
 }
+
+
 export default config
