@@ -12,7 +12,7 @@ function Signup() {
   const [error, setError] = useState("");
   const { register, handleSubmit } = useForm();
 
-  const signup = async (data) => {
+  const Signup = async (data) => {
     setError("");
     try {
       const session = await authService.createAccount(data);
