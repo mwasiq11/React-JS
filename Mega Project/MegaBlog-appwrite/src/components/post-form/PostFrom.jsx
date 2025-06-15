@@ -37,7 +37,7 @@ function PostFrom({ post }) {
     }
   };
 
-  return <div></div>;
+  return <div>Post From</div>;
 }
 
 export default PostFrom;
