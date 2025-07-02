@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import appwriteService from "../appwrite/config";
+import appwriteService from "../Appwrite/Service";
 import { Container, PostCard } from "../components";
 
 function Home() {
@@ -12,7 +12,7 @@ function Home() {
       }
     });
   }, []);
-  if (posts.length === 0) {
+  if (!posts||posts.length === 0) {
     return (
       <div className="w-full py-8 mt-4 text-center">
         <Container>

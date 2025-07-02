@@ -2,7 +2,7 @@ import React from "react";
 import { useCallback } from "react";
 import { Button, Input, RTE, Select } from "..";
 import { useNavigate } from "react-router-dom";
-import appwriteService from "../../Appwrite/config";
+import appwriteService from "../../Appwrite/Service";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form"; // hook that is used to add forms//
 

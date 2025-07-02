@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, PostCard } from "../components";
-import appwriteService from "../appwrite/config";
+import appwriteService from "../Appwrite/Service";
 function Allpost() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
