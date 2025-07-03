@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import { useDispatch } from 'react-redux'
 import authService from './Appwrite/Auth'
 import { login, logout } from './store/AuthSlice'
 import Header from './components/header/Header'
 import Footer from './components/Footer/Footer'
 import { Outlet } from 'react-router-dom'
+import Container from './components/container/Container'
 
 
 function App() {
@@ -24,19 +24,21 @@ useEffect(()=>{
   .finally(()=>setloading(false))
 },[])
 
-return !loading ? (
-  <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-    <h1 className="text-4xl font-bold text-blue-600">Tailwind is working!</h1>
-    <div className='w-full block'>
-      <Header/>
-      <main>
-        <Outlet/>
-      </main>
-      <Footer/>
+  return !loading ? (
+   
+    <div className='min-h-screen flex flex-wrap content-between bg-gray-400 '>
+     <div className='bg-blue-500 ml-12'>Tailwind</div>
+      
+      <div className='w-full block'>
+        <Header />
+        <main>
+        TODO:  <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
-
-  </div>
-):null
+  
+  ) : null
 
  
 

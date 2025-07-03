@@ -14,6 +14,7 @@ import Allpost from "./pages/Allpost.jsx";
 import Post from "./pages/Post.jsx";
 import { AuthLayout, Login } from './components/index.js'
 import { Header ,Footer,Container} from "./components";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
