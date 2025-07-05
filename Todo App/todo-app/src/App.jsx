@@ -3,6 +3,7 @@ import "./App.css";
 import { TodoProvider, useTodo } from "./Contexts/Context";
 import TodoForm from "./Components/TodoForm";
 import TodoItems from "./Components/TodoItems";
+import { data } from "react-router-dom";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -26,15 +27,47 @@ function App() {
       )
     );
   };
+
+  // const addTodo = (todo) => {
+  //   setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
+  // };
+  // const updateTodo = (id, todo) => {
+  //   setTodos((prev) =>
+  //     prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo))
+  //   );
+  // };
+  // const deleteTodo = (id) => {
+  //   setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  // };
+  // const toggleTodo = (id) => {
+  //   setTodos((prev) =>
+  //     prev.map((prevTodo) =>
+  //       prevTodo.id === id
+  //         ? { ...prevTodo, completed: !prevTodo.completed }
+  //         : prevTodo
+  //     )
+  //   );
+  // };
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem("todos"));
-    if (todos && length.todos > 0) {
+    if (todos && todos.length > 0) {
       setTodos(todos);
     }
   }, []);
+
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
+
+  // useEffect(() => {
+  //   const todos = JSON.parse(localStorage.getItem("todos"));
+  //   if (todos && length.todos > 0) {
+  //     setTodos(todos);
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   localStorage.setItem("todos", JSON.stringify(todos));
+  // }, [todos]);
 
   return (
     <TodoProvider
@@ -46,13 +79,12 @@ function App() {
             Manage Your Todos
           </h1>
           <div className="mb-4">
-           <TodoForm/>
-            </div>
+            <TodoForm />
+          </div>
           <div className="flex flex-wrap gap-y-3">
-            {todos.map((todo)=>(
-              <div key={todo.id}
-              className="w-full">
-                <TodoItems todo={todo}/>
+            {todos.map((todo) => (
+              <div key={todo.id} className="w-full">
+                <TodoItems todo={todo} />
               </div>
             ))}
           </div>
