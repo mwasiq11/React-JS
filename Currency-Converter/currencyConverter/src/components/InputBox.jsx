@@ -1,19 +1,20 @@
 import React, { useId } from "react";
 
-function InputBox({
+ const InputBox=({
   label,
   amount,
   onAmountChange,
-  onCurrencyChange = [],
   currencyOptions,
   selectCurrency = "usd",
   amountDisable = false,
   currencyDisable = false,
   className = "",
-}) {
+})=>{
+  
   const AmountInputId = useId();
 
-  return (
+  return(
+
     <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
       <div className="w-1/2">
         <label
@@ -55,3 +56,6 @@ function InputBox({
     </div>
   );
 }
+
+export default InputBox;
+

@@ -8,7 +8,6 @@ import {
   Route,
   RouterProvider,
   Routes,
-  useLoaderData,
 } from "react-router-dom";
 import Home from "./components/Home/Home.jsx";
 import About from "./components/About/About.jsx";
@@ -19,9 +18,9 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="" element={<Home />} />
-      <Route path="about" element={<About />} />
-      <Route path="contact" element={<Contact />} />
-      <Route path="user/:userid" element={<User />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/user/:userid" element={<User />} />
       <Route loader={githubloaderInfo} path="github" element={<Github />} />
     </Route>
   )
@@ -31,3 +30,4 @@ createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </StrictMode>
 );
+

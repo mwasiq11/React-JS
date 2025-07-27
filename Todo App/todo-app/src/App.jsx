@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { TodoProvider, useTodo } from "./Contexts/Context";
+import { TodoProvider} from "./Contexts/Context";
 import TodoForm from "./Components/TodoForm";
 import TodoItems from "./Components/TodoItems";
-import { data } from "react-router-dom";
+import { useTodo } from "./Contexts/Context";
+
 
 function App() {
   const [todos, setTodos] = useState([]);
